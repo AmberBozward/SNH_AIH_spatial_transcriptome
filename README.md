@@ -42,7 +42,7 @@ The CosMx repository files are structured by the below:
 ├── 2.4.immune.r               # Script to split cells into immune and non-immune to help with cell labelling
 ├── 2.5.polygon.r              # Script to 
 ├── 2.6.de.r                   # Script to do differentials
-└── combined_plots.r           # Script to generate all figures
+└── CosMx_plots.R          	   # Script to generate all figures
 ```
 
 ---
@@ -59,7 +59,7 @@ The CosMx repository files are structured by the below:
 │   └── 2.4.immune.r               # Script to split cells into immune and non-immune to help with cell labelling
 │   └── 2.5.polygon.r              # Script to 
 │   └── 2.6.de.r                   # Script to do differentials
-│   └── combined_plots.r           # Script to generate all figures
+│   └── CosMx_plots.r              # Script to generate all figures
 └── figures/                       # Output folder for all generated plots
 ```
 
