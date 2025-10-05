@@ -135,7 +135,7 @@ This repository provides an **easy-to-use pipeline for pre-processing Visium dat
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 The repository files are structured by the below:
 
@@ -158,7 +158,7 @@ The repository files are structured by the below:
 
 ---
 
-## ⚙️ Requirements
+## Requirements
 
 ### R Version
 - R >= 4.2.0
