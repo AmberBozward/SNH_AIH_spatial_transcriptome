@@ -9,7 +9,27 @@ The repository includes workflows for CosMx single-cell spatial transcriptomics,
 
 ---
 
-## Repository Structure
+## Table of Contents
+
+- [Overall Repository Structure](#overall-repository-structure)
+- [CosMx Processing the Data and Figure Generation](#cosmx-processing-the-data-and-figure-generation)
+- [CosMx Repository Structure](#cosmx-repository-structure)
+- [Data Structure](#data-structure)
+- [Requirements](#requirements)
+- [Usage](#usage)
+- [Customisation](#customisation)
+- [Neighbourhood enrichment analysis and Ripleys spatial statistics](#neighbourhood-enrichment-analysis-and-ripleys-spatial-statistics)
+- [Visium Processing the Data and Figure Generation](#visium-processing-the-data-and-figure-generation)
+- [Visium Repository Structure](#visium-repository-structure)
+- [Visium Requirements](#visium-requirements)
+- [Input Data](#input-data)
+- [Contributors](#contributors)
+- [License](#license)
+- [Citation](#citation)
+
+---
+
+## Overall Repository Structure
 
 ```
 SNH_spatial_transcriptome/
@@ -23,7 +43,7 @@ SNH_spatial_transcriptome/
 
 ---
 
-# CosMx Pre-processing the Data and Figure Generation
+# CosMx Processing the Data and Figure Generation
 
 This repository provides an **easy-to-use pipeline for pre-processing CosMx data and generating figures**. It is designed for liver disease research (e.g., autoimmune hepatitis (AIH), seronegative (SN) liver disease, and donor (D) samples) and can produce UMAPs, barplots, boxplots, heatmaps, dotplots, and CellChat-based cell-cell interaction visualizations.  
 
@@ -31,7 +51,7 @@ The scripts are structured for **reproducibility**, with figures saved automatic
 
 ---
 
-## Repository Structure
+## CosMx Repository Structure
 
 The CosMx repository files are structured by the below:
 
@@ -121,7 +141,7 @@ source("scripts/combined_plots.R")
 
 ---
 
-## Neighbourhood enrichment analysis and Ripley's spatial statistics
+## Neighbourhood enrichment analysis and Ripleys spatial statistics
 
 All relevant Python code for neighborhood enrichment analysis and Ripley's spatial statistics to understand cellular spatial organisation patterns can be found in the the following project repository:
 
@@ -129,13 +149,13 @@ https://github.com/kyliesavoye/hepatitis-spatial-transcriptomics/
 
 ---
 
-# Visium Pre-processing the Data and Figure Generation
+# Visium Processing the Data and Figure Generation
 
 This repository provides an **easy-to-use pipeline for pre-processing Visium data and generating figures**. It is designed for liver disease research (e.g., autoimmune hepatitis (AIH), seronegative (SN) liver disease, and donor (D) samples) and can produce UMAPs, barplots, boxplots, heatmaps and dotplots.
 
 ---
 
-## Repository Structure
+## Visium Repository Structure
 
 The repository files are structured by the below:
 
@@ -158,7 +178,7 @@ The repository files are structured by the below:
 
 ---
 
-## Requirements
+## Visium Requirements
 
 ### R Version
 - R >= 4.2.0
