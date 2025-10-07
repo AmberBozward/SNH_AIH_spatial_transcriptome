@@ -13,17 +13,19 @@ The repository includes workflows for CosMx single-cell spatial transcriptomics,
 
 - [Overall Repository Structure](#overall-repository-structure)
 - [CosMx Processing the Data and Figure Generation](#cosmx-processing-the-data-and-figure-generation)
-- [CosMx Repository Structure](#cosmx-repository-structure)
-- [Data Structure](#data-structure)
-- [Requirements](#requirements)
-- [Usage](#usage)
-- [Customisation](#customisation)
-- [Neighbourhood enrichment analysis and Ripleys spatial statistics](#neighbourhood-enrichment-analysis-and-ripleys-spatial-statistics)
+  - [CosMx Repository Structure](#cosmx-repository-structure)
+  - [Data Structure](#data-structure)
+  - [Requirements](#requirements)
+  - [Usage](#usage)
+  - [Customisation](#customisation)
+  - [Neighbourhood Enrichment Analysis and Ripleys Spatial Statistics](#neighbourhood-enrichment-analysis-and-ripleys-spatial-statistics)
 - [Visium Processing the Data and Figure Generation](#visium-processing-the-data-and-figure-generation)
-- [Visium Repository Structure](#visium-repository-structure)
-- [Visium Requirements](#visium-requirements)
-- [Input Data](#input-data)
+  - [Visium Repository Structure](#visium-repository-structure)
+  - [Visium Requirements](#visium-requirements)
+  - [Input Data](#input-data)
 - [Metatranscriptomics](#metatranscriptomics)
+  - [Metatrascriptomics Repository Structure ](#metatrascriptomics-repository-structure )
+  - [Metatranscriptomics Code Usage](#metatranscriptomics-code-usage)
 - [Contributors](#contributors)
 - [License](#license)
 - [Citation](#citation)
@@ -142,7 +144,7 @@ source("scripts/combined_plots.R")
 
 ---
 
-## Neighbourhood enrichment analysis and Ripleys spatial statistics
+## Neighbourhood Enrichment Analysis and Ripleys Spatial Statistics
 
 All relevant Python code for neighborhood enrichment analysis and Ripley's spatial statistics to understand cellular spatial organisation patterns can be found in the the following project repository:
 
@@ -233,6 +235,18 @@ data/
 
 # Metatranscriptomics
 
+This repository provides an **easy-to-use pipeline for pre-processing metatranscriptomics data and generating figures**. It is designed for liver disease research (e.g., autoimmune hepatitis (AIH), seronegative (SN) liver disease, and donor (D) samples).
+
+---
+
+## Metatrascriptomics Repository Structure 
+
+└── Metatranscriptomics.R          	   # Script for all analysis and figures
+
+---
+
+## Metatranscriptomics Code Usage 
+
 Barcode trimming and QC with fastp:
 fastp -i input_R1.fastq.gz -I input_R2.fastq.gz \
 -o output_R1_trimmed.fastq.gz -O output_R2_trimmed.fastq.gz \
@@ -264,7 +278,7 @@ use tximport and tx2gene
 run DESeq2 pipeline 
 visualisation and combining Telescope counts with Salmon gene counts
 
-
+---
 
 ## Contributors
 
