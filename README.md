@@ -23,6 +23,7 @@ The repository includes workflows for CosMx single-cell spatial transcriptomics,
 - [Visium Repository Structure](#visium-repository-structure)
 - [Visium Requirements](#visium-requirements)
 - [Input Data](#input-data)
+- [Metatranscriptomics](#metatranscriptomics)
 - [Contributors](#contributors)
 - [License](#license)
 - [Citation](#citation)
@@ -229,6 +230,42 @@ data/
     ...
 
 ---
+
+# Metatranscriptomics
+
+Barcode trimming and QC with fastp:
+fastp -i input_R1.fastq.gz -I input_R2.fastq.gz \
+-o output_R1_trimmed.fastq.gz -O output_R2_trimmed.fastq.gz \
+--detect_adapter_for_pe  --trim_poly_g  --html fastp_report.html \
+--length_required 40 --qualified_quality_phred 20 --thread 10
+
+Creating bowtie2 index and aligning reads to it
+bowtie2-build /path/to/GRCh38.fasta GRCh38_index
+bowtie2 -x GRCh38_index -1 trimmed_R1.fastq.gz -2 trimmed_R2.fastq.gz  --very-sensitive-local -k 100 --score-min L, 0, 1.6 -S output.sam
+samtools view -bS output.sam | samtools sort -o output_sorted.bam
+samtools index output_sorted.bam 
+
+Running Telescope
+telescope assign /path/to/output_sorted.bam/  /path/to/GTF_file/transcripts.gtf --ncpu 12
+Note: obtain HERV and L1 annotation file (transcripts.gtf) following the instructions available in: https://github.com/mlbendall/telescope_annotation_db/tree/af3c359/builds/retro.hg38.v1
+
+Host gene quantification with Salmon:
+preparing metadata:
+grep "^>" <(gunzip -c primary_assembly.genome.fa.gz) | cut -d " " -f 1 > decoys.txt
+sed -i.bak -e 's/>//g' decoys.txt
+preparing concatenated transcriptome and genome reference file for index:
+zcat gencode.transcripts.fa.gz primary_assembly.genome.fa.gz | gzip -c > gentrome.fa.gz
+running Salmon:
+salmon index -t gentrome.fa.gz -d decoys.txt -p 12 -i salmon_index --gencode
+salmon quant -i salmon_index -l A -1 trimmed_R1.fastq.gz -2 trimmed_R2.fastq.gz -p 16 -o salmon_output
+
+Import Salmon into R and run DESeq2 using tximport (see R script for full detail, the main steps are listed below)
+use tximport and tx2gene
+run DESeq2 pipeline 
+visualisation and combining Telescope counts with Salmon gene counts
+
+
+
 ## Contributors
 
 Dr Amber Bozward — CosMx and Visium workflows, integration, figure generation
