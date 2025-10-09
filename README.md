@@ -18,6 +18,7 @@ The repository includes workflows for CosMx single-cell spatial transcriptomics,
   - [Requirements](#requirements)
   - [Usage](#usage)
   - [Customisation](#customisation)
+  - [Choosing areas on CosMx spatial plot](#choosing-areas-on-cosmx-spatial-plot)
   - [Neighbourhood Enrichment Analysis and Ripleys Spatial Statistics](#neighbourhood-enrichment-analysis-and-ripleys-spatial-statistics)
 - [Visium Processing the Data and Figure Generation](#visium-processing-the-data-and-figure-generation)
   - [Visium Repository Structure](#visium-repository-structure)
@@ -65,6 +66,7 @@ The CosMx repository files are structured by the below:
 ├── 2.4.immune.r               # Script to split cells into immune and non-immune to help with cell labelling
 ├── 2.5.polygon.r              # Script to 
 ├── 2.6.de.r                   # Script to do differentials
+├── Choosing_CosMx_areas.py    # Script to chosse areas of interest on spatial CosMx plot
 └── CosMx_plots.R          	   # Script to generate all figures
 ```
 
@@ -141,6 +143,27 @@ source("scripts/combined_plots.R")
 ## Customisation
 	•	Modify genes for plots: Edit the genes_to_plot vector in the script for boxplots and dotplots.
 	•	Change cell types: Ensure final_cell_types contains the desired annotations for coloring and subsetting.
+
+---
+
+## Choosing areas on CosMx spatial plot
+
+Choosing_CosMx_areas.py is a Python script for interactively selecting and extracting specific spatial regions of interest (ROIs) from CosMx spatial transcriptomics data.
+
+The script allows users to:
+	•	Load the CosMx segmentation image and associated spatial coordinates.
+	•	Visually select regions within the tissue using polygon or rectangular selection tools.
+	•	Extract cell IDs or molecular data corresponding to the selected region.
+
+Dependencies:
+	•	Python ≥ 3.8
+	•	matplotlib
+	•	numpy
+	•	pandas
+	•	opencv-python (for image handling)
+
+Purpose:
+This tool was developed to facilitate manual spatial subsetting of CosMx datasets, enabling region-specific analyses (e.g., comparing parenchyma vs non-parenchyma areas in liver tissue).
 
 ---
 
