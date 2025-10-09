@@ -141,6 +141,7 @@ source("scripts/combined_plots.R")
 ---
 
 ## Customisation
+
 	•	Modify genes for plots: Edit the genes_to_plot vector in the script for boxplots and dotplots.
 	•	Change cell types: Ensure final_cell_types contains the desired annotations for coloring and subsetting.
 
@@ -148,14 +149,16 @@ source("scripts/combined_plots.R")
 
 ## Choosing areas on CosMx spatial plot
 
-Choosing_CosMx_areas.py is a Python script for interactively selecting and extracting specific spatial regions of interest (ROIs) from CosMx spatial transcriptomics data.
+'Choosing_CosMx_areas.py' is a Python script for interactively selecting and extracting specific spatial regions of interest (ROIs) from CosMx spatial transcriptomics data.
 
 The script allows users to:
+
 	•	Load the CosMx segmentation image and associated spatial coordinates.
 	•	Visually select regions within the tissue using polygon or rectangular selection tools.
 	•	Extract cell IDs or molecular data corresponding to the selected region.
 
 Dependencies:
+
 	•	Python ≥ 3.8
 	•	matplotlib
 	•	numpy
