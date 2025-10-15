@@ -149,7 +149,7 @@ source("scripts/combined_plots.R")
 
 ## Choosing areas on CosMx spatial plot
 
-'Choosing_CosMx_areas.py' is a Python script for interactively selecting and extracting specific spatial regions of interest (ROIs) from CosMx spatial transcriptomics data.
+'Choosing_CosMx_areas.py' is a Python script for interactively selecting and extracting specific spatial regions of interest (ROIs) from CosMx spatial transcriptomics data created by John Cole.
 
 The script allows users to:
 
