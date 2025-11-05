@@ -18,6 +18,7 @@ The repository includes workflows for CosMx single-cell spatial transcriptomics,
   - [Requirements](#requirements)
   - [Usage](#usage)
   - [Customisation](#customisation)
+  - [Approximate run time for a CosMx Seurat object](#approximate-run-time-for-a-cosmx-seurat-object)
   - [Choosing areas on CosMx spatial plot](#choosing-areas-on-cosmx-spatial-plot)
   - [Neighbourhood Enrichment Analysis and Ripleys Spatial Statistics](#neighbourhood-enrichment-analysis-and-ripleys-spatial-statistics)
 - [Visium Processing the Data and Figure Generation](#visium-processing-the-data-and-figure-generation)
@@ -67,7 +68,7 @@ The CosMx repository files are structured by the below:
 ├── 2.5.polygon.r              # Script to 
 ├── 2.6.de.r                   # Script to do differentials
 ├── Choosing_CosMx_areas.py    # Script to chosse areas of interest on spatial CosMx plot
-└── CosMx_plots.R          	   # Script to generate all figures
+└── CosMx_plots.R                # Script to generate all figures
 ```
 
 ---
@@ -97,6 +98,7 @@ The CosMx repository files are structured by the below:
 ## Requirements
 
 - **R ≥ 4.2**
+
 - Required packages:
 
 ```r
@@ -104,46 +106,70 @@ install.packages(c("dplyr", "ggplot2", "pheatmap", "patchwork", "ggrepel"))
 BiocManager::install(c("SingleR", "CellChat", "Seurat"))
 ```
 
-•	Input data: a Seurat object with:
-	•	Annotated cell types in meta.data$final_cell_types
-	•	Expression layers including data and counts
+•     Input data: a Seurat object with:
+
+      •     Annotated cell types in meta.data$final_cell_types
+	  
+      •     Expression layers including data and counts
 
 ---
 
 ## Usage
-	1.	Clone the repository:
+      1.    Clone the repository:
 
 ```
 git clone https://github.com/AmberBozward/SNH_AIH_spatial_transcriptomics.git
 cd spatial-figures
 ```
 
-	2.	Place your preprocessed Seurat/CosMx object in data/:
+      2.    Place your preprocessed Seurat/CosMx object in data/:
 
 ```r
 data/seurat_obj_processed.rds
 ```
 
-	3.	Run the combined plotting script in R:
+      3.    Run the combined plotting script in R:
 
 ```r
 source("scripts/combined_plots.R")
 ```
 
-	4.	Check the figures/ folder for all generated outputs:
-	•	UMAPs
-	•	Barplots
-	•	Boxplots
-	•	Heatmaps
-	•	Dotplots
-	•	CellChat network plots
+      4.    Check the figures/ folder for all generated outputs:
+      •     UMAPs
+	  
+      •     Barplots
+	  
+      •     Boxplots
+	  
+      •     Heatmaps
+	  
+      •     Dotplots
+	  
+      •     CellChat network plots
 
 ---
 
 ## Customisation
 
-	•	Modify genes for plots: Edit the genes_to_plot vector in the script for boxplots and dotplots.
-	•	Change cell types: Ensure final_cell_types contains the desired annotations for coloring and subsetting.
+      •     Modify genes for plots: Edit the genes_to_plot vector in the script for boxplots and dotplots.
+	  
+      •     Change cell types: Ensure final_cell_types contains the desired annotations for coloring and subsetting.
+
+---
+
+## Approximate run time for a CosMx Seurat object
+
+The following estimates are based on running an R session in the Birmingham BlueBEAR supercomputing resources with 72 cores (each core allocates 4GB memory). 
+
+A Seurat object containing the centroids, segmentation and molecules data in the images slot:
+
+      •     Reading the object from the directory onto the R session ~ 6 mins
+	  
+      •     Integrating the data on individual samples using Harmony ~ 90 mins
+	  
+      •     Plotting single molecules spatially ~ 3 mins
+	  
+      •     All other plots that do not use the molecules slot ~ 1-2 mins
 
 ---
 
@@ -153,17 +179,23 @@ source("scripts/combined_plots.R")
 
 The script allows users to:
 
-	•	Load the CosMx segmentation image and associated spatial coordinates.
-	•	Visually select regions within the tissue using polygon or rectangular selection tools.
-	•	Extract cell IDs or molecular data corresponding to the selected region.
+      •     Load the CosMx segmentation image and associated spatial coordinates.
+	  
+      •     Visually select regions within the tissue using polygon or rectangular selection tools.
+	  
+      •     Extract cell IDs or molecular data corresponding to the selected region.
 
 Dependencies:
 
-	•	Python ≥ 3.8
-	•	matplotlib
-	•	numpy
-	•	pandas
-	•	opencv-python (for image handling)
+      •     Python ≥ 3.8
+	  
+      •     matplotlib
+	  
+      •     numpy
+	  
+      •     pandas
+	  
+      •     opencv-python (for image handling)
 
 Purpose:
 This tool was developed to facilitate manual spatial subsetting of CosMx datasets, enabling region-specific analyses (e.g., comparing parenchyma vs non-parenchyma areas in liver tissue).
@@ -216,18 +248,18 @@ The repository files are structured by the below:
 Make sure the following packages are installed before running the scripts:
 
 - `Seurat` (>= 5.0)
-- `ggplot2`
-- `dplyr`
-- `tidyr`
-- `patchwork`
-- `Matrix`
-- `stringr`
-- `cowplot`
-- `ggrepel`
-- `gridExtra`
-- `hdf5r`
-- `spatstat` (if using spatial statistics)
-- `SeuratDisk` (if working with `.h5Seurat` or converting from AnnData)
+- `ggplot2`4.0.0
+- `dplyr`1.1.4
+- `tidyr`1.3.1
+- `patchwork`1.3.0
+- `Matrix`1.7-3
+- `stringr`1.5.2
+- `cowplot`1.1.3
+- `ggrepel`0.9.6
+- `gridExtra`2.3
+- `hdf5r`1.3.12
+- `spatstat` (if using spatial statistics) 
+- `SeuratDisk` (if working with `.h5Seurat` or converting from AnnData) 
 
 You can install missing packages with:
 ```r
@@ -267,7 +299,7 @@ This repository provides an **easy-to-use pipeline for pre-processing metatransc
 
 ## Metatrascriptomics Repository Structure 
 
-└── Metatranscriptomics.R          	   # Script for all analysis and figures
+└── Metatranscriptomics.R              # Script for all analysis and figures
 
 ---
 
@@ -329,6 +361,7 @@ This repository is licensed under the MIT License (see LICENSE file).
 ---
 
 ## Citation
+
 
 If you use this code, please cite:
 
